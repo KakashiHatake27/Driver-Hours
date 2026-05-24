@@ -1,0 +1,236 @@
+  :root {
+            --primary-color: #25D366; /* WhatsApp Green */
+            --primary-hover: #128C7E;
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --border-color: #cccccc;
+            --danger-color: #dc3545;
+            --danger-bg: #fce8e6;
+        }
+
+        /* Prevent ambient zooming on mobile input focus */
+        html, body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            padding: 20px 16px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-sizing: border-box;
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: var(--primary-hover);
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        .driver-info {
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 20px;
+        }
+
+/* Style for the Driver Dropdown Select Menu */
+select#drivers {
+    width: 100%;
+    padding: 14px 40px 14px 12px; /* Generous right padding to prevent text overlapping the arrow */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px; /* Prevents mobile browser auto-zoom */
+    background-color: #ffffff;
+    color: var(--text-color);
+    cursor: pointer;
+    font-family: inherit;
+    
+    /* Disables default native browser arrows */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    /* Injects a custom modern dropdown chevron arrow */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23128C7E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+/* Focus interaction matching the theme */
+select#drivers:focus {
+    outline: none;
+    border-color: var(--primary-hover);
+    box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
+}
+
+/* Style the placeholder text differently from the actual names */
+select#drivers:invalid,
+select#drivers option[value=""] {
+    color: #888888;
+}
+
+/* Style for actual options inside the dropdown menu list */
+select#drivers option {
+    color: var(--text-color);
+    background-color: #ffffff;
+    padding: 10px;
+}
+        
+        .form-group {
+            margin-bottom: 0px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Enhanced Mobile Inputs */
+        input {
+            width: 100%;
+            padding: 14px 12px; /* Large touch surface */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px; /* Prevents iOS auto-zoom on focus */
+            background-color: #fff;
+            -webkit-appearance: none; /* Uniform styling on iOS */
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-hover);
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
+        }
+
+        /* Responsive Mobile Layout for Cards */
+        .entry-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            border-left: 5px solid var(--primary-color);
+            border-top: 1px solid #e9ecef;
+            border-right: 1px solid #e9ecef;
+            border-bottom: 1px solid #e9ecef;
+            position: relative;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .row-date { grid-column: span 2; }
+        .row-hours { grid-column: span 2; }
+        .row-delete { grid-column: span 2; }
+
+        /* Large Thumb-friendly Delete Button */
+        .btn-delete {
+            width: 100%;
+            background-color: var(--danger-bg);
+            color: var(--danger-color);
+            border: 1px solid #fad2cf;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Sticky-feeling Sticky Footer Action Block */
+        .btn-group {
+            display: flex;
+            flex-direction: column; /* Stacked layout makes thumb hitting easier */
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        button.action-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-next {
+            background-color: #e1f5fe;
+            color: #0288d1;
+            border: 1px solid #b3e5fc;
+            order: 2; /* Keeps "Add Day" secondary below Submit */
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            order: 1;
+        }
+
+        .hidden { display: none; }
+        
+        .success-message { 
+            text-align: center; 
+            padding: 30px 10px; 
+        }
+        
+        .success-message h3 { 
+            color: var(--primary-color); 
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        /* Desktop Optimization (Fallback) */
+        @media (min-width: 420px) {
+            .entry-row {
+                grid-template-columns: 2fr 1fr auto;
+                align-items: flex-end;
+            }
+            .row-date { grid-column: span 1; }
+            .row-hours { grid-column: span 1; }
+            .row-delete { grid-column: span 1; }
+            .btn-delete {
+                width: auto;
+                padding: 13px 16px;
+                margin-top: 0;
+            }
+            .btn-group {
+                flex-direction: row;
+            }
+            .btn-next { order: 1; }
+            .btn-submit { order: 2; }
+        }

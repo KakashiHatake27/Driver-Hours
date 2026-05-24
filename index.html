@@ -3,200 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <link rel="stylesheet" href="style.css">
     <title>Driver Hours Submission</title>
-    <style>
-        :root {
-            --primary-color: #25D366; /* WhatsApp Green */
-            --primary-hover: #128C7E;
-            --bg-color: #f0f2f5;
-            --card-bg: #ffffff;
-            --text-color: #333333;
-            --border-color: #cccccc;
-            --danger-color: #dc3545;
-            --danger-bg: #fce8e6;
-        }
-
-        /* Prevent ambient zooming on mobile input focus */
-        html, body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            padding: 12px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: var(--card-bg);
-            padding: 20px 16px;
-            border-radius: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            box-sizing: border-box;
-        }
-
-        h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
-            color: var(--primary-hover);
-            text-align: center;
-            font-size: 1.4rem;
-        }
-
-        .driver-info {
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--bg-color);
-            padding-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 0px;
-        }
-
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-            color: #555;
-        }
-
-        /* Enhanced Mobile Inputs */
-        input {
-            width: 100%;
-            padding: 14px 12px; /* Large touch surface */
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 16px; /* Prevents iOS auto-zoom on focus */
-            background-color: #fff;
-            -webkit-appearance: none; /* Uniform styling on iOS */
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--primary-hover);
-            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.2);
-        }
-
-        /* Responsive Mobile Layout for Cards */
-        .entry-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            background: #f8f9fa;
-            padding: 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            border-left: 5px solid var(--primary-color);
-            border-top: 1px solid #e9ecef;
-            border-right: 1px solid #e9ecef;
-            border-bottom: 1px solid #e9ecef;
-            position: relative;
-            animation: fadeIn 0.2s ease-out;
-        }
-
-        .row-date { grid-column: span 2; }
-        .row-hours { grid-column: span 2; }
-        .row-delete { grid-column: span 2; }
-
-        /* Large Thumb-friendly Delete Button */
-        .btn-delete {
-            width: 100%;
-            background-color: var(--danger-bg);
-            color: var(--danger-color);
-            border: 1px solid #fad2cf;
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 4px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Sticky-feeling Sticky Footer Action Block */
-        .btn-group {
-            display: flex;
-            flex-direction: column; /* Stacked layout makes thumb hitting easier */
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        button.action-btn {
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-next {
-            background-color: #e1f5fe;
-            color: #0288d1;
-            border: 1px solid #b3e5fc;
-            order: 2; /* Keeps "Add Day" secondary below Submit */
-        }
-
-        .btn-submit {
-            background-color: var(--primary-color);
-            color: white;
-            order: 1;
-        }
-
-        .hidden { display: none; }
-        
-        .success-message { 
-            text-align: center; 
-            padding: 30px 10px; 
-        }
-        
-        .success-message h3 { 
-            color: var(--primary-color); 
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-
-        /* Desktop Optimization (Fallback) */
-        @media (min-width: 420px) {
-            .entry-row {
-                grid-template-columns: 2fr 1fr auto;
-                align-items: flex-end;
-            }
-            .row-date { grid-column: span 1; }
-            .row-hours { grid-column: span 1; }
-            .row-delete { grid-column: span 1; }
-            .btn-delete {
-                width: auto;
-                padding: 13px 16px;
-                margin-top: 0;
-            }
-            .btn-group {
-                flex-direction: row;
-            }
-            .btn-next { order: 1; }
-            .btn-submit { order: 2; }
-        }
-    </style>
+   
 </head>
 <body>
 
@@ -206,14 +15,20 @@
         
         <div class="driver-info">
             <div class="form-group">
-                <label for="driver-name">Driver Name</label>
-                <input type="text" id="driver-name" list="drivers-list" placeholder="Tap to choose name..." required>
+                <label for="drivers">Driver Name</label>
+                <!-- <input type="text" id="driver-name" list="drivers-list" placeholder="Tap to choose name..." required> -->
                 
-                <datalist id="drivers-list">
+                <!-- <datalist id="drivers-list">
                     <option value="Amrit Singh"></option>
                     <option value="Pankajdeep Singh"></option>
                     <option value="Jagrup Singh"></option>
-                </datalist>
+                </datalist> -->
+            <select name="drivers" id="drivers">
+                <option value="" disabled selected>Tap to choose name...</option>
+                <option value="Amrit Singh">Amrit Singh</option>
+                <option value="Pankajdeep Singh">Pankajdeep Singh</option>
+                <option value="Jagrup Singh">Jagrup Singh</option>
+            </select>
             </div>
         </div>
 
@@ -245,107 +60,7 @@
     </div>
 </div>
 
-<script>
-    const entriesContainer = document.getElementById('entries-container');
-    const addRowBtn = document.getElementById('add-row-btn');
-    const submitBtn = document.getElementById('submit-btn');
-    const formContainer = document.getElementById('form-container');
-    const successContainer = document.getElementById('success-container');
-    const driverNameInput = document.getElementById('driver-name');
-
-    // Auto-populate today's date
-    document.querySelector('.date-input').valueAsDate = new Date();
-
-    // Add a new mobile entry block
-    addRowBtn.addEventListener('click', () => {
-        const newRow = document.createElement('div');
-        newRow.className = 'entry-row';
-
-        const dateInputs = document.querySelectorAll('.date-input');
-        const lastDateVal = dateInputs[dateInputs.length - 1].value;
-        let nextDateStr = '';
-        if (lastDateVal) {
-            const lastDate = new Date(lastDateVal);
-            lastDate.setDate(lastDate.getDate() + 1);
-            nextDateStr = lastDate.toISOString().split('T')[0];
-        }
-
-        newRow.innerHTML = `
-            <div class="row-date">
-                <label>Date</label>
-                <input type="date" class="date-input" value="${nextDateStr}" required>
-            </div>
-            <div class="row-hours">
-                <label>Hours Worked</label>
-                 <input type="number" class="hours-input" min="0" max="250" step="0.5" inputmode="decimal" value="12" required>
-            </div>
-            <div class="row-delete">
-                <button type="button" class="btn-delete" onclick="deleteRow(this)">
-                    Remove This Day
-                </button>
-            </div>
-        `;
-
-        entriesContainer.appendChild(newRow);
-        
-        // Dynamic scroll adjusts so phone focus targets the new block instantly
-        setTimeout(() => {
-            newRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 50);
-    });
-
-    function deleteRow(buttonElement) {
-        buttonElement.closest('.entry-row').remove();
-    }
-
-    // Submit trigger
-    submitBtn.addEventListener('click', () => {
-        const driverName = driverNameInput.value.trim();
-        
-        if (!driverName) {
-            alert('Please select or type your name.');
-            driverNameInput.focus();
-            return;
-        }
-
-        const dateInputs = document.querySelectorAll('.date-input');
-        const hoursInputs = document.querySelectorAll('.hours-input');
-        const shiftData = [];
-        let totalHours = 0;
-        let isValid = true;
-
-        dateInputs.forEach((dateInput, index) => {
-            const date = dateInput.value;
-            const hours = parseFloat(hoursInputs[index].value);
-
-            if (!date || isNaN(hours)) {
-                isValid = false;
-                return;
-            }
-
-            shiftData.push({ date: date, hours: hours });
-            totalHours += hours;
-        });
-
-        if (!isValid) {
-            alert('Please check that all Date and Hours boxes are completely filled out.');
-            return;
-        }
-
-        const submissionPayload = {
-            driver: driverName,
-            submittedAt: new Date().toISOString(),
-            totalHoursLogged: totalHours,
-            shifts: shiftData
-        };
-
-        console.log("Compiled Payload:", submissionPayload);
-
-        formContainer.classList.add('hidden');
-        successContainer.classList.remove('hidden');
-        window.scrollTo(0, 0);
-    });
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
